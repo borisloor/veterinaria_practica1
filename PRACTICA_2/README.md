@@ -30,4 +30,4 @@
 
 ![Alt text](front.png)
 
-![Alt text](practica2.jpg)
+![Alt text](practica2.JPG)
