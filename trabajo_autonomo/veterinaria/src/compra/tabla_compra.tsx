@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-
-import { URL_API } from "../constants/constantes";
 import { Navbar } from "../home/Navbar/Navbar";
-import { Compra } from "./Compra.type";
+import { useGetCompras } from "./getCompras.hook";
 
 export function TablaCompra() {
-	const [compra, setCompra] = useState<Compra[]>([
+	const compra = useGetCompras([
 		{
 			id_veterinaria: "",
 			id_producto: "",
@@ -13,19 +10,6 @@ export function TablaCompra() {
 			fecha_compra: "",
 		},
 	]);
-
-	const getCompras = async () => {
-		const response = await fetch(`${URL_API}/compras`);
-		const data = await response.json();
-
-		return data as Compra[];
-	};
-
-	useEffect(() => {
-		getCompras().then((data) => {
-			setCompra(data);
-		});
-	}, []);
 
 	return (
 		<>

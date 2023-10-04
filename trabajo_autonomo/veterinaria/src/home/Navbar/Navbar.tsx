@@ -4,9 +4,9 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
 			<div className="container">
-				<a className="navbar-brand" href="#">
+				<Link className="navbar-brand nav-link" to="/">
 					Veterinaria
-				</a>
+				</Link>
 				<button
 					className="navbar-toggler"
 					type="button"

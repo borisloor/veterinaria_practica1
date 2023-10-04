@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-
-import { URL_API } from "../constants/constantes";
 import { Navbar } from "../home/Navbar/Navbar";
-import { Venta } from "./Venta.type";
+import { useGetVentas } from "./getVentas.hook";
 
 export function TablaVentas() {
-	const [ventas, setVentas] = useState<Venta[]>([
+	const ventas = useGetVentas([
 		{
 			id_veterinaria: "",
 			id_cliente: "",
@@ -15,19 +12,6 @@ export function TablaVentas() {
 			descripcion: "",
 		},
 	]);
-
-	const getVentas = async () => {
-		const response = await fetch(`${URL_API}/ventas`);
-		const data = await response.json();
-
-		return data as Venta[];
-	};
-
-	useEffect(() => {
-		getVentas().then((data) => {
-			setVentas(data);
-		});
-	}, []);
 
 	return (
 		<>

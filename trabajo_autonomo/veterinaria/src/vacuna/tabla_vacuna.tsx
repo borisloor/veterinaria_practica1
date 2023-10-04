@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-
-import { URL_API } from "../constants/constantes";
 import { Navbar } from "../home/Navbar/Navbar";
-import { Vacuna } from "./Vacuna.type";
+import { useGetVacunas } from "./getVacunas.hook";
 
 export function TablaVacunas() {
-	const [vacunas, setVacunas] = useState<Vacuna[]>([
+	const vacunas = useGetVacunas([
 		{
 			id_mascota: "",
 			id_veterinario: "",
@@ -14,19 +11,6 @@ export function TablaVacunas() {
 			dosis: "",
 		},
 	]);
-
-	const getVacunas = async () => {
-		const response = await fetch(`${URL_API}/vacunas`);
-		const data = await response.json();
-
-		return data as Vacuna[];
-	};
-
-	useEffect(() => {
-		getVacunas().then((data) => {
-			setVacunas(data);
-		});
-	}, []);
 
 	return (
 		<>

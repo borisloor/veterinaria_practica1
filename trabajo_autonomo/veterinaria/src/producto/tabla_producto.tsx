@@ -1,29 +1,13 @@
-import { useEffect, useState } from "react";
-
-import { URL_API } from "../constants/constantes";
 import { Navbar } from "../home/Navbar/Navbar";
-import { Producto } from "./Producto.type";
+import { useGetProductos } from "./getProductos.hook";
 
 export function TablaProductos() {
-	const [productos, setProductos] = useState<Producto[]>([
+	const productos = useGetProductos([
 		{
 			nombre: "",
 			id_tipo_producto: "",
 		},
 	]);
-
-	const getProductos = async () => {
-		const response = await fetch(`${URL_API}/productos`);
-		const data = await response.json();
-
-		return data as Producto[];
-	};
-
-	useEffect(() => {
-		getProductos().then((data) => {
-			setProductos(data);
-		});
-	}, []);
 
 	return (
 		<>

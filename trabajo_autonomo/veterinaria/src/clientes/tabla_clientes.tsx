@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-
-import { URL_API } from "../constants/constantes";
 import { Navbar } from "../home/Navbar/Navbar";
-import { Cliente } from "./Cliente.type";
+import { useGetClientes } from "./getClientes.hook";
 
 export function TablaClientes() {
-	const [clientes, setClientes] = useState<Cliente[]>([
+	const clientes = useGetClientes([
 		{
 			nombre: "",
 			apellido: "",
@@ -19,25 +16,6 @@ export function TablaClientes() {
 			num_mascotas: 0,
 		},
 	]);
-
-	const getClientes = async () => {
-		const response = await fetch(`${URL_API}/clientes`, {
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		console.log(response);
-		const data = await response.json();
-		console.log(data);
-
-		return data as Cliente[];
-	};
-
-	useEffect(() => {
-		getClientes().then((data) => {
-			setClientes(data);
-		});
-	}, []);
 
 	return (
 		<>

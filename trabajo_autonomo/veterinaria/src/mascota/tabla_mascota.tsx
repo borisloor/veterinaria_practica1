@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-
-import { URL_API } from "../constants/constantes";
 import { Navbar } from "../home/Navbar/Navbar";
-import { Mascota } from "./Mascota.type";
+import { useGetMascotas } from "./getMascotas.hook";
 
 export function TablaMascotas() {
-	const [mascotas, setMascotas] = useState<Mascota[]>([
+	const mascotas = useGetMascotas([
 		{
 			id_cliente: "",
 			id_tipo_mascota: "",
@@ -17,19 +14,6 @@ export function TablaMascotas() {
 			esterilizacion: "",
 		},
 	]);
-
-	const getMascotas = async () => {
-		const response = await fetch(`${URL_API}/mascotas`);
-		const data = await response.json();
-
-		return data as Mascota[];
-	};
-
-	useEffect(() => {
-		getMascotas().then((data) => {
-			setMascotas(data);
-		});
-	}, []);
 
 	return (
 		<>
