@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import NotFound from "./404/NotFound";
 import { TablaCitas } from "./cita/tabla_citas";
 import { TablaClientes } from "./clientes/tabla_clientes";
 import { TablaCompra } from "./compra/tabla_compra";
@@ -21,6 +22,7 @@ export function App() {
 				<Route path="/productos" element={<TablaProductos />} />
 				<Route path="/vacunas" element={<TablaVacunas />} />
 				<Route path="/ventas" element={<TablaVentas />} />
+				<Route path="/*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>
 	);
