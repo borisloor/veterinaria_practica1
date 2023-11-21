@@ -1,0 +1,36 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Compra {
+  id_veterinaria: String!
+  id_producto: String!
+  id_proveedor: String!
+  id_compra_detalle: String!
+  fecha_compra: String!
+  active: Boolean!
+}
+
+type Query {
+  compras: [Compra!]!
+  compra(id: ID!): Compra!
+}
+
+type Mutation {
+  createCompra(createCompraDto: CreateCompraDto!): Compra!
+  updateCompra(id: ID!, updateCompraDto: UpdateCompraDto!): Compra!
+  removeCompra(id: ID!): Compra!
+  updateAllActiveCompra: Compra!
+}
+
+input CreateCompraDto {
+  id_veterinaria: String!
+  id_producto: String!
+  id_proveedor: String!
+  id_compra_detalle: String!
+  fecha_compra: String!
+}
+
+input UpdateCompraDto {
+  fecha_compra: String!
+}
